@@ -73,7 +73,29 @@ export type HeaderTitle = {
   path: string;
   icon: string;
 };
+/**
+ * Home Items
+ */
+export type HomeItemsVio = {
+  id: number;
+  title: string;
+  href?: string;
+};
+/**
+ * News_Paper
+ */
+export type NewsPaper = {
+  name: string;
+  logo: string;
+};
 
+/**
+ * SELECT_DATA
+ */
+export type SELECT_DATA = {
+  value: string | number;
+  label: string;
+};
 /**
  * Main
  */

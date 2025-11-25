@@ -143,7 +143,6 @@ export default function HomeWhyChooseVio() {
           </Box>
         </Typography>
 
-        {/* Nút tròn – giống hệt ảnh */}
         <Stack direction="row" justifyContent="center" spacing={2} flexWrap="wrap" sx={{ mb: 10 }}>
           {tabs.map((tab) => {
             const isActive = activeTab === tab;
@@ -204,12 +203,12 @@ export default function HomeWhyChooseVio() {
                   {current.items.map((item, index) => (
                     <Box
                       key={index}
-                      component={m.div} // ← THAY m.div BẰNG CÁI NÀY
+                      component={m.div}
                       initial={{ opacity: 0, x: -40 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1, duration: 0.6 }}
-                      sx={{ width: '100%' }} // ← VẪN DÙNG sx NGON LÀNH!
+                      sx={{ width: '100%' }}
                     >
                       <Stack direction="row" spacing={3} alignItems="flex-start">
                         <Box sx={{ flexShrink: 0, width: 56, height: 56 }}>

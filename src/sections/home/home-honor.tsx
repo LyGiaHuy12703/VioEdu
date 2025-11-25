@@ -1,3 +1,4 @@
+import type { SelectChangeEvent } from '@mui/material/Select';
 import type { Variants, TargetAndTransition } from 'framer-motion';
 import type { RankingItem, HomeHonorProps } from 'src/layouts/main/nav/types';
 
@@ -14,7 +15,11 @@ import Typography from '@mui/material/Typography';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 
+import { GRADE, ROUND_EXAM } from 'src/layouts/nav-config-main';
+
 import { varFade, MotionViewport } from 'src/components/animate';
+
+import AddressSelect from './components/address-select';
 
 const SecondaryPodium = ({ rank, item }: { rank: 2 | 3; item: RankingItem }) => (
   <m.div style={{ textAlign: 'center' }} whileHover={{ y: -10 }}>
@@ -151,66 +156,12 @@ export function HomeHonor({
             >
               {/* Tỉnh thành */}
               <FormControl sx={{ minWidth: { xs: 280, sm: 180 } }}>
-                <InputLabel id="province-label" sx={{ color: 'white' }}>
-                  Tỉnh / Thành phố
-                </InputLabel>
-                <Select
-                  labelId="province-label"
-                  value={province}
-                  label="Tỉnh / Thành phố"
-                  onChange={(e) => setProvince(e.target.value)}
-                  sx={{
-                    color: 'white',
-                    bgcolor: 'rgba(255,255,255,0.1)',
-                    borderRadius: 2,
-                    '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.3)' },
-                    '&:hover .MuiOutlinedInput-notchedOutline': {
-                      borderColor: 'rgba(255,255,255,0.5)',
-                    },
-                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#4caf50' },
-                    '& .MuiSvgIcon-root': { color: 'white' },
-                  }}
-                >
-                  <MenuItem value="">Tất cả tỉnh thành</MenuItem>
-                  <MenuItem value="hanoi">Hà Nội</MenuItem>
-                  <MenuItem value="hcm">TP. Hồ Chí Minh</MenuItem>
-                  <MenuItem value="danang">Đà Nẵng</MenuItem>
-                  <MenuItem value="cantho">Cần Thơ</MenuItem>
-                  <MenuItem value="haiphong">Hải Phòng</MenuItem>
-                  <MenuItem value="binhduong">Bình Dương</MenuItem>
-                  <MenuItem value="dongnai">Đồng Nai</MenuItem>
-                </Select>
-              </FormControl>
-
-              <FormControl sx={{ minWidth: { xs: 280, sm: 180 } }}>
-                <InputLabel id="district-label" sx={{ color: 'white' }}>
-                  Quận / Huyện
-                </InputLabel>
-                <Select
-                  labelId="district-label"
-                  value={district}
-                  label="Quận / Huyện"
-                  onChange={(e) => setDistrict(e.target.value)}
-                  sx={{
-                    color: 'white',
-                    bgcolor: 'rgba(255,255,255,0.1)',
-                    borderRadius: 2,
-                    '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.3)' },
-                    '&:hover .MuiOutlinedInput-notchedOutline': {
-                      borderColor: 'rgba(255,255,255,0.5)',
-                    },
-                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#4caf50' },
-                    '& .MuiSvgIcon-root': { color: 'white' },
-                  }}
-                >
-                  <MenuItem value="">Tất cả quận huyện</MenuItem>
-                  <MenuItem value="quan1">Quận 1</MenuItem>
-                  <MenuItem value="quan3">Quận 3</MenuItem>
-                  <MenuItem value="binhtan">Quận Bình Tân</MenuItem>
-                  <MenuItem value="thuduc">TP. Thủ Đức</MenuItem>
-                  <MenuItem value="camau">TP. Cà Mau</MenuItem>
-                  <MenuItem value="ninhkieu">Quận Ninh Kiều</MenuItem>
-                </Select>
+                <AddressSelect
+                  province={province}
+                  setProvince={setProvince}
+                  district={district}
+                  setDistrict={setDistrict}
+                />
               </FormControl>
 
               <FormControl sx={{ minWidth: { xs: 280, sm: 140 } }}>
@@ -221,8 +172,9 @@ export function HomeHonor({
                   labelId="grade-label"
                   value={grade}
                   label="Khối lớp"
-                  onChange={(e) => setGrade(e.target.value)}
+                  onChange={(e: SelectChangeEvent) => setGrade(e.target.value)}
                   sx={{
+                    minWidth: 160,
                     color: 'white',
                     bgcolor: 'rgba(255,255,255,0.1)',
                     borderRadius: 2,
@@ -230,20 +182,27 @@ export function HomeHonor({
                     '&:hover .MuiOutlinedInput-notchedOutline': {
                       borderColor: 'rgba(255,255,255,0.5)',
                     },
-                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#4caf50' },
+                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                      borderColor: '#4caf50',
+                    },
                     '& .MuiSvgIcon-root': { color: 'white' },
+                    '& .MuiSelect-select': {
+                      py: 1.5,
+                    },
                   }}
                 >
-                  <MenuItem value="">Tất cả khối</MenuItem>
-                  <MenuItem value={1}>Khối 1</MenuItem>
-                  <MenuItem value={2}>Khối 2</MenuItem>
-                  <MenuItem value={3}>Khối 3</MenuItem>
-                  <MenuItem value={4}>Khối 4</MenuItem>
-                  <MenuItem value={5}>Khối 5</MenuItem>
-                  <MenuItem value={6}>Khối 6</MenuItem>
-                  <MenuItem value={7}>Khối 7</MenuItem>
-                  <MenuItem value={8}>Khối 8</MenuItem>
-                  <MenuItem value={9}>Khối 9</MenuItem>
+                  {GRADE.map((option) => (
+                    <MenuItem
+                      key={option.value || 'all'}
+                      value={option.value}
+                      sx={{
+                        fontWeight: option.value === 0 ? 600 : 400,
+                        color: option.value === 0 ? 'primary.main' : 'inherit',
+                      }}
+                    >
+                      {option.label}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
 
@@ -256,8 +215,9 @@ export function HomeHonor({
                   labelId="round-label"
                   value={round}
                   label="Vòng thi"
-                  onChange={(e) => setRound(e.target.value)}
+                  onChange={(e: SelectChangeEvent) => setRound(e.target.value)}
                   sx={{
+                    minWidth: 200,
                     color: 'white',
                     bgcolor: 'rgba(255,255,255,0.1)',
                     borderRadius: 2,
@@ -267,13 +227,26 @@ export function HomeHonor({
                     },
                     '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#4caf50' },
                     '& .MuiSvgIcon-root': { color: 'white' },
+                    '& .MuiSelect-select': { py: 1.5 },
                   }}
                 >
-                  <MenuItem value="all">Tổng hợp tất cả vòng</MenuItem>
-                  <MenuItem value="preliminary">Vòng sơ loại</MenuItem>
-                  <MenuItem value="quarter">Tứ kết</MenuItem>
-                  <MenuItem value="semi">Bán kết</MenuItem>
-                  <MenuItem value="final">Chung kết</MenuItem>
+                  {ROUND_EXAM.map((option) => (
+                    <MenuItem
+                      key={option.value}
+                      value={option.value}
+                      sx={{
+                        fontWeight: option.value === 'all' ? 600 : 500,
+                        bgcolor:
+                          round === option.value && option.value === 'all'
+                            ? 'success.main'
+                            : 'inherit',
+                        color:
+                          round === option.value && option.value === 'all' ? 'white' : 'inherit',
+                      }}
+                    >
+                      {option.label}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
             </Stack>

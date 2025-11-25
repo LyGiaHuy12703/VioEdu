@@ -1,4 +1,12 @@
-import type { NavMainProps, RankingProps, AssistantProps, HeaderTitleProps } from './main/nav/types';
+import type {
+  NewsPaper,
+  SELECT_DATA,
+  NavMainProps,
+  RankingProps,
+  HomeItemsVio,
+  AssistantProps,
+  HeaderTitleProps,
+} from './main/nav/types';
 
 import { paths } from 'src/routes/paths';
 
@@ -146,4 +154,44 @@ export const headerTitle: HeaderTitleProps['data'] = [
     icon: '/assets/svg/phone.svg',
     path: '#',
   },
+];
+export const Home_Items_Vio: HomeItemsVio[] = [
+  { id: 1, title: 'Học toán trực tuyến' },
+  { id: 2, title: 'Học tiếng Việt trực tuyến' },
+  { id: 3, title: 'Học toán tiếng Anh trực tuyến' },
+];
+
+export const News_Paper: NewsPaper[] = [
+  { name: 'vn_express', logo: '/logo/logo-vnexpress.jpg' },
+  { name: 'dan_tri', logo: '/logo/logo-dantri.png' },
+  { name: 'nhip_song_so', logo: '/logo/nhipSongSo-logo.png' },
+  { name: 'tien_phong', logo: '/logo/logo-tienphong.jpg' },
+  { name: 'nguoi_lao_dong', logo: '/logo/nld.jpg' },
+  { name: 'vtv3', logo: '/logo/nhipSongSo-logo.png' },
+  { name: 'vtv_news', logo: '/logo/logo-vnexpress.jpg' },
+  { name: 'ict_news', logo: '/logo/ICTnews-Logo.jpeg' },
+];
+
+export const GRADE: SELECT_DATA[] = [
+  { value: 0, label: 'Tất cả khối' },
+  { value: 1, label: 'Khối 1' },
+  { value: 2, label: 'Khối 2' },
+  { value: 3, label: 'Khối 3' },
+  { value: 4, label: 'Khối 4' },
+  { value: 5, label: 'Khối 5' },
+  { value: 6, label: 'Khối 6' },
+  { value: 7, label: 'Khối 7' },
+  { value: 8, label: 'Khối 8' },
+  { value: 9, label: 'Khối 9' },
+  { value: 10, label: 'Lớp 10' },
+  { value: 11, label: 'Lớp 11' },
+  { value: 12, label: 'Lớp 12' },
+];
+
+export const ROUND_EXAM: SELECT_DATA[] = [
+  { value: 'all', label: 'Tổng hợp tất cả vòng' },
+  { value: 'preliminary', label: 'Vòng sơ loại' },
+  { value: 'quarter', label: 'Tứ kết' },
+  { value: 'semi', label: 'Bán kết' },
+  { value: 'final', label: 'Chung kết' },
 ];

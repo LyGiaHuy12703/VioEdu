@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
@@ -31,8 +32,19 @@ export function HomeDownloadApp() {
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 3 }}>
-              <Box component="img" src="/assets/icons/vio/Google_Play_New.png" sx={{ mr: 3 }} />
-              <Box component="img" src="/assets/icons/vio/App_Store_New.png" />
+              <Image
+                src="/assets/icons/vio/Google_Play_New.png"
+                alt="google play"
+                width={146}
+                height={43}
+                style={{ marginRight: 10 }}
+              />
+              <Image
+                src="/assets/icons/vio/App_Store_New.png"
+                alt="app store"
+                width={146}
+                height={43}
+              />
             </Box>
           </Grid>
         </m.div>
@@ -48,7 +60,7 @@ export function HomeDownloadApp() {
               height: '100vh',
             }}
           >
-            <Box component="img" src="/assets/icons/vio/device.png" width={400} />
+            <Image src="/assets/icons/vio/device.png" alt="device" width={363} height={270} />
           </Grid>
         </m.div>
       </MotionViewport>

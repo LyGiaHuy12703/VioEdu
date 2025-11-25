@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
@@ -13,7 +14,13 @@ export function HomePartnerVio() {
           <Typography variant="h3" sx={{ textAlign: 'center', my: 5 }}>
             Đối tác chiến lược
           </Typography>
-          <Box component="img" src="/assets/icons/vio/partner.png" sx={{ height: '124' }} />
+          <Image
+            src="/assets/icons/vio/partner.png"
+            alt="partner"
+            width={2000}
+            height={124}
+            style={{ height: 124, width: 'auto' }}
+          />
         </Box>
       </m.div>
     </MotionViewport>

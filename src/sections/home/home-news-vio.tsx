@@ -1,11 +1,16 @@
+import Image from 'next/image';
 import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
+import { News_Paper } from 'src/layouts/nav-config-main';
+
 import { varSlide, MotionViewport } from 'src/components/animate';
 
+const firstRow = News_Paper.slice(0, 4);
+const secondRow = News_Paper.slice(4, 8);
 export function HomeNewsVio() {
   return (
     <MotionViewport viewport={{ once: false, amount: 0.01 }}>
@@ -16,30 +21,66 @@ export function HomeNewsVio() {
         <Typography variant="h3" sx={{ textAlign: 'center', my: 10 }}>
           Báo chí nói về VioEdu
         </Typography>
-        <Stack sx={{ display: 'flex', justifyContent: 'space-between', flexFlow: 'row' }}>
-          <Box component="img" src="/logo/logo-vnexpress.jpg" sx={{ width: { xs: 80, md: 200 } }} />
-          <Box component="img" src="/logo/logo-dantri.png" sx={{ width: { xs: 80, md: 200 } }} />
-          <Box
-            component="img"
-            src="/logo/nhipSongSo-logo.png"
-            sx={{ width: { xs: 80, md: 200 } }}
-          />
-          <Box component="img" src="/logo/logo-tienphong.jpg" sx={{ width: { xs: 80, md: 200 } }} />
+        <Stack
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          spacing={{ xs: 3, sm: 6, md: 8 }}
+          sx={{ mb: { xs: 4, md: 6 } }}
+        >
+          {firstRow.map((item) => (
+            <Box
+              key={item.name}
+              sx={{
+                width: { xs: 80, sm: 120, md: 160, lg: 200 },
+                height: 'auto',
+                '& img': { objectFit: 'contain' },
+              }}
+            >
+              <Image
+                src={item.logo}
+                alt={`Logo ${item.name}`}
+                width={200}
+                height={100}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  maxHeight: 120,
+                }}
+                priority
+              />
+            </Box>
+          ))}
         </Stack>
-        <Stack sx={{ display: 'flex', justifyContent: 'space-between', flexFlow: 'row', my: 5 }}>
-          <Box component="img" src="/logo/nld.jpg" sx={{ width: { xs: 80, md: 200 } }} />
-          <Box
-            component="img"
-            src="/logo/nhipSongSo-logo.png"
-            sx={{ width: { xs: 80, md: 200 } }}
-          />
-          <Box component="img" src="/logo/logo-vnexpress.jpg" sx={{ width: { xs: 80, md: 200 } }} />
-
-          <Box
-            component="img"
-            src="/logo/ICTnews-Logo.jpeg"
-            sx={{ width: { xs: 80, md: 200 }, height: 120 }}
-          />
+        <Stack
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          spacing={{ xs: 3, sm: 6, md: 8 }}
+        >
+          {secondRow.map((item) => (
+            <Box
+              key={item.name}
+              sx={{
+                width: { xs: 80, sm: 120, md: 160, lg: 200 },
+                height: 'auto',
+                '& img': { objectFit: 'contain' },
+              }}
+            >
+              <Image
+                src={item.logo}
+                alt={`Logo ${item.name}`}
+                width={200}
+                height={100}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  maxHeight: 120,
+                }}
+                priority
+              />
+            </Box>
+          ))}
         </Stack>
       </m.div>
     </MotionViewport>
