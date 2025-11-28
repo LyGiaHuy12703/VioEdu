@@ -1,5 +1,6 @@
 import type { Breakpoint } from '@mui/material/styles';
 
+import Link from 'next/link';
 import Image from 'next/image';
 
 import Box from '@mui/material/Box';
@@ -34,7 +35,7 @@ export function Header({
     <HeaderRoot sx={sx} {...other}>
       <Container
         disableGutters
-        maxWidth="lg"
+        maxWidth="xl"
         sx={{
           px: { xs: 3, sm: 4, md: 6, lg: 10, xl: 20 },
         }}
@@ -44,18 +45,32 @@ export function Header({
             gap: 5,
             display: 'flex',
             justifyContent: 'space-between',
-
-            flexDirection: { xs: 'row', [layoutQuery]: 'row' },
             alignItems: 'center',
+            minWidth: 0,
             my: 1,
           }}
         >
-          <img src="/logo/logoWhite.png" alt="VioEdu" width={80} />
+          <Box sx={{ flexShrink: 0 }}>
+            <Link href="/" style={{ display: 'block', lineHeight: 0 }}>
+              <Image
+                src="/logo/logoWhite.png"
+                alt="VioEdu - Trang chủ"
+                width={80}
+                height={100}
+                style={{ width: 80, height: 'auto' }}
+              />
+            </Link>
+          </Box>
           <Box
             sx={{
               display: { xs: 'none', [layoutQuery]: 'flex' },
-              gap: 4,
+              gap: { md: 2, lg: 3, xl: 4 },
               alignItems: 'center',
+              flexGrow: 1,
+              justifyContent: 'center',
+              minWidth: 0,
+              mx: { md: 2, lg: 3, xl: 4 },
+              overflow: 'hidden',
             }}
           >
             {headerTitle.map((list) => (
@@ -65,6 +80,7 @@ export function Header({
                   display: 'flex',
                   alignItems: 'center',
                   flexDirection: { xs: 'column', [layoutQuery]: 'row' },
+                  minWidth: 0,
                 }}
               >
                 <Image src={list.icon} alt={list.title} width={24} height={24} />

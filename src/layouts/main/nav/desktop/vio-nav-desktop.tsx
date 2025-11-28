@@ -1,4 +1,3 @@
-// ← Thêm dòng này nếu chưa có
 import type { NavMainProps } from '../types';
 
 import { Nav, NavUl } from '../components';
@@ -6,19 +5,15 @@ import { NavList } from './nav-desktop-list';
 
 // ----------------------------------------------------------------------
 
-export function NavDesktop({ data, sx, ...other }: NavMainProps) {
+export function VioNavDesktop({ data, sx, ...other }: NavMainProps) {
   return (
     <Nav
       sx={[
-        // XÓA HOẶC COMMENT DÒNG NÀY ĐI → không để nó tự set màu đen nữa!
-        // color: theme.palette.text.primary,
-
-        // Thay vào đó: để màu được quyết định từ bên ngoài (MainLayout)
-        { color: 'inherit' }, // rất quan trọng!
-
-        // Cho phép override từ MainLayout
+        () => ({
+          /* Put styles */
+        }),
         ...(Array.isArray(sx) ? sx : [sx]),
-      ].filter(Boolean)}
+      ]}
       {...other}
     >
       <NavUl
@@ -38,10 +33,6 @@ export function NavDesktop({ data, sx, ...other }: NavMainProps) {
                 backgroundColor: 'action.hover',
                 borderRadius: 1,
                 transition: 'background-color 200ms ease',
-              },
-              // Đảm bảo chữ con cũng đổi màu theo
-              '& a, & .MuiTypography-root': {
-                color: 'inherit !important',
               },
             }}
           />

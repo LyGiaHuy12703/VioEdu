@@ -17,7 +17,7 @@ import { Iconify } from 'src/components/iconify';
 export const navData: NavMainProps['data'] = [
   {
     title: 'Vào học',
-    path: '/',
+    path: '/skill-list',
     icon: <Iconify width={22} icon="solar:home-angle-bold-duotone" />,
   },
   {
@@ -43,7 +43,7 @@ export const navData: NavMainProps['data'] = [
   {
     title: 'Tin tức',
     icon: <Iconify width={22} icon="solar:notebook-bold-duotone" />,
-    path: paths.docs,
+    path: paths.news,
   },
 ];
 

@@ -22,6 +22,7 @@ export const paths = {
   analysisIntro: '/analysis-intro',
   arena: '/arena',
   package: '/package',
+  news: 'https://tintuc.vio.edu.vn/',
   //-----------------------------------------------------------------------
   comingSoon: '/coming-soon',
   maintenance: '/maintenance',
