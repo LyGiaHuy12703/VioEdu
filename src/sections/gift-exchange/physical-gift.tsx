@@ -17,8 +17,8 @@ export function PhysicalGift() {
       <LoginForGiveGift />
       <GiftComingSoon />
       {GiftData.map((item) => (
-        <Box>
-          <Stack direction="row" alignItems="center" spacing={2} sx={{ mt: 5 }} key={item.name}>
+        <Box key={item.name}>
+          <Stack direction="row" alignItems="center" spacing={2} sx={{ mt: 5 }}>
             <Divider sx={{ flex: 1 }} />
             <Chip
               size="medium"

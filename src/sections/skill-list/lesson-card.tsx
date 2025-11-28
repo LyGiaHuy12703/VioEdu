@@ -3,7 +3,7 @@ import type { Lesson } from './type';
 
 import Image from 'next/image';
 
-import { Box, Grid, Paper, Stack, Button, Typography } from '@mui/material';
+import { Box, Grid, Paper, Stack, Typography } from '@mui/material';
 
 interface LessonCardsProps {
   lessons: Lesson[];
@@ -119,25 +119,60 @@ export default function LessonCards({ lessons, curriculumId, completedCount }: L
                   >
                     {lesson.name}
                   </Typography>
-                  <Stack direction="row" justifyContent="center" alignItems="center">
-                    <Button>
-                      <Stack direction="column" justifyContent="center" alignItems="center">
-                        <Image src="/assets/svg/forward.svg" alt="Video" width={22} height={22} />
-                        <Typography variant="body2">VIDEO LÝ THUYẾT</Typography>
-                      </Stack>
-                    </Button>
-                    <Button>
-                      <Stack direction="column" justifyContent="center" alignItems="center">
-                        <Image src="/assets/svg/book.svg" alt="Video" width={22} height={22} />
-                        <Typography variant="body2">THỰC HÀNH</Typography>
-                      </Stack>
-                    </Button>
-                    <Button>
-                      <Stack direction="column" justifyContent="center" alignItems="center">
-                        <Image src="/assets/svg/timeLine.svg" alt="Video" width={22} height={22} />
-                        <Typography variant="body2">TIẾN ĐỘ</Typography>
-                      </Stack>
-                    </Button>
+                  <Stack direction="row" justifyContent="space-around" flexGrow={1} spacing={2}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        cursor: 'pointer',
+                        p: 1,
+                        borderRadius: 2,
+                        transition: 'all 0.2s',
+                        '&:hover': { bgcolor: 'action.hover' },
+                      }}
+                    >
+                      <Image src="/assets/svg/forward.svg" alt="Video" width={28} height={28} />
+                      <Typography variant="caption" fontWeight={600} mt={0.5}>
+                        VIDEO
+                      </Typography>
+                    </Box>
+
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        cursor: 'pointer',
+                        p: 1,
+                        borderRadius: 2,
+                        transition: 'all 0.2s',
+                        '&:hover': { bgcolor: 'action.hover' },
+                      }}
+                    >
+                      <Image src="/assets/svg/book.svg" alt="Thực hành" width={28} height={28} />
+                      <Typography variant="caption" fontWeight={600} mt={0.5}>
+                        THỰC HÀNH
+                      </Typography>
+                    </Box>
+
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        cursor: 'pointer',
+                        p: 1,
+                        borderRadius: 2,
+                        transition: 'all 0.2s',
+                        '&:hover': { bgcolor: 'action.hover' },
+                      }}
+                    >
+                      <Image src="/assets/svg/timeLine.svg" alt="Tiến độ" width={28} height={28} />
+                      <Typography variant="caption" fontWeight={600} mt={0.5}>
+                        TIẾN ĐỘ
+                      </Typography>
+                    </Box>
                   </Stack>
                 </Box>
               </Paper>

@@ -1,4 +1,4 @@
-import { VioLayout } from '../../layouts/main/vioLayout';
+import { MainLayout } from 'src/layouts/main';
 
 // ----------------------------------------------------------------------
 
@@ -7,5 +7,5 @@ type Props = {
 };
 
 export default function Layout({ children }: Props) {
-  return <VioLayout>{children}</VioLayout>;
+  return <MainLayout>{children}</MainLayout>;
 }
